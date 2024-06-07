@@ -2,14 +2,20 @@ export const API_URL = `${process.env.API_ORIGIN}/api/weblarek`;
 export const CDN_URL = `${process.env.API_ORIGIN}/content/weblarek`;
 
 export enum Events {
-    SET_PRODUCTS_IN_GALLERY = 'gallery:add products',
-    ADD_PRODUCT_IN_GALLERY = 'gallery:add product',
-    DELETE_PRODUCT_FROM_GALLERY = 'gallery:delete product',
+    SET_PRODUCTS = 'gallery:add products',
     TAKE_PRODUCT = 'basket:add product',
+    OPEN_BASKET = 'basket:open',
     REMOVE_PRODUCT = 'basket:delete product',
     CLEAR_BASKET = 'basket:clear',
+    CREATE_ORDER = 'order:create',
+    ORDER_SUBMIT = 'order:submit',
     ACCEPT_ORDER = 'order:accept',
-    CLEAR_ORDER = 'order:clear'
+    SUCCESS_SUMBIT = 'success:submit',
+    CLEAR_ORDER = 'order:clear',
+    CHOOOSE_PRODUCT = 'product:select',
+    PREVIEW_CHANGE = 'preview:change',
+    MODAL_WINDOW_OPEN = 'modal:open',
+    MODAL_WINDOW_CLOSE = 'modal:close'
 };
 
 export const settings = {

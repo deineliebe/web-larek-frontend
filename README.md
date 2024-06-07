@@ -96,15 +96,15 @@ interface IEvents {
 События осуществляются с помощью функции класса `EventEmitter`. Элементы их перечисления (`Enum Events`):
 - `SET_PRODUCTS = 'gallery:add products'` - добавление списка продуктов в галерею;
 - `TAKE_PRODUCT = 'basket:add product'` - добавление продукта в корзину;
-- `OPEN_BASKET = basket:open` - открытие модального окна корзины;
+- `OPEN_BASKET = 'basket:open'` - открытие модального окна корзины;
 - `REMOVE_PRODUCT = 'basket:delete product'` - удаление продукта в корзине по идентификатору;
 - `CLEAR_BASKET = 'basket:clear'` - очистка корзины;
 - `CREATE_ORDER = 'order:create'` - обработка нажатия на кнопку оформления товара в корзине;
-- `ORDER_SUBMIT = order:submit` - обработка нажатия на кнопку "Далее" после выбора типа оплаты и адреса;
+- `ORDER_SUBMIT = 'order:submit'` - обработка нажатия на кнопку "Далее" после выбора типа оплаты и адреса;
 - `ACCEPT_ORDER = 'order:accept'` - отправка данных о заказе на сервер;
 - `SUCCESS_SUMBIT = 'success:submit'` - нажатие на кнопку возвращения в галерею в окне завершения заказа;
 - `CLEAR_ORDER = 'order:clear'` - очистка заказа;
-- `CHOOOSE_PRODUCT = 'product:select` - обработка клика по карточке продукта в галерее;
+- `CHOOOSE_PRODUCT = 'product:select'` - обработка клика по карточке продукта в галерее;
 - `PREVIEW_CHANGE = 'preview:change'` - открытие модального окна с информацией о товаре;
 - `MODAL_WINDOW_OPEN = 'modal:open'` - открытие модального окна;
 - `MODAL_WINDOW_CLOSE = 'modal:close'` - закрытие модального окна.
