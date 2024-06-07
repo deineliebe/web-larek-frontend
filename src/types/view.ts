@@ -19,6 +19,12 @@ export interface IFormView {
     errorText: HTMLSpanElement;
 }
 
+export interface IPageView {
+    busketButton: HTMLButtonElement;
+    productsInBusket: HTMLSpanElement;
+    products: HTMLElement[];
+}
+
 export interface IProductInCatalogView {
     category: HTMLSpanElement;
     title: HTMLHeadingElement;

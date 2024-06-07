@@ -6,21 +6,19 @@ export interface IProduct {
     image: string;
     title: string;
     category: string;
-    price: number;
+    price: number | null;
 }
 
 export interface IGallery {
     products: IProduct[];
     total: number;
-    addProduct(product: IProduct): void;
-    removeProduct(id: string): void;
 }
 
 export interface IBasket {
-    products: Map<string, number>;
-    addProduct(id: string): void;
+    products: IProduct[];
+    addProduct(id: IProduct): void;
     removeProduct(id: string): void;
-    clearBucket() : void;
+    clearBasket() : void;
 }
 
 export interface IOrder {
