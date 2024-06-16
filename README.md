@@ -270,7 +270,6 @@ interface IViewConstructor {
 ### IModalView
 ```typescript
 interface IModalView {
-    closeButton: HTMLButtonElement;
     content: HTMLElement;
     open(): void;
     close(): void;
@@ -286,7 +285,6 @@ interface IFormView {
 ### IPageView
 ```typescript
 interface IPageView {
-    busketButton: HTMLButtonElement;
     productsInBusket: HTMLSpanElement;
     products: HTMLElement[];
 }
@@ -310,7 +308,6 @@ interface IProductFullView {
     title: HTMLHeadingElement;
     description: HTMLParagraphElement;
     price: HTMLSpanElement;
-    button: HTMLButtonElement;
 }
 ```
 ### IBasketView
@@ -318,7 +315,6 @@ interface IProductFullView {
 interface IBasketView {
     products: HTMLElement[];
     total: HTMLSpanElement;
-    button: HTMLButtonElement;
 }
 ```
 
@@ -328,7 +324,6 @@ interface IBasketItemView {
     id: HTMLSpanElement;
     title: HTMLSpanElement;
     price: HTMLSpanElement;
-    button: HTMLButtonElement;
 }
 ```
 
@@ -336,9 +331,6 @@ interface IBasketItemView {
 ```typescript
 interface IOrderView {
     address: HTMLInputElement;
-    buttonOnline: HTMLButtonElement;
-    buttonUponReceipt: HTMLButtonElement;
-    buttonSubmit: HTMLButtonElement;
 }
 ```
 
@@ -347,7 +339,6 @@ interface IOrderView {
 interface IContactsView {
     email: HTMLInputElement;
     phone: HTMLInputElement;
-    button: HTMLButtonElement;
 }
 ```
 

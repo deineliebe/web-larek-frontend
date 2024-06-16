@@ -1,6 +1,5 @@
 import { IOrder, PaymentType } from '../../types/model';
 
-//DRAFT
 export class Order implements IOrder {
     payment: PaymentType;
     items: string[];

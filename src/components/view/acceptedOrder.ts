@@ -1,13 +1,22 @@
+import { IAcceptedOrderView } from '../../types/view';
+import { ensureElement } from '../../utils/utils';
+import { settings } from '../../utils/constants';
+import { View } from './view';
 import { IEvents } from '../base/events';
 
-//DRAFT
+export class AcceptedOrderView extends View implements IAcceptedOrderView {
+    description: HTMLParagraphElement;
+    protected _button: HTMLButtonElement;
 
-export class acceptedModalView {
-    title: HTMLSpanElement | null;
-    description: HTMLSpanElement;
-    button: HTMLButtonElement;
+    constructor(container: HTMLElement, events: IEvents) {
+        super(container, events);
+        this.description = ensureElement<HTMLParagraphElement>(settings.successSettings.description);
+        this._button = ensureElement<HTMLButtonElement>(settings.successSettings.button);
+    }
 
-    constructor(protected container: HTMLElement, protected events: IEvents) {
-        this.title = document.querySelector('.order-success__title');
+    render(data?: { id: string; title: string }): HTMLElement {
+        if (data) {
+        }
+        return this.container;
     }
 }

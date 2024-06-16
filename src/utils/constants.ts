@@ -19,6 +19,11 @@ export enum Events {
 }
 
 export const settings = {
+    pageSelector: '.page',
+    pageSettings: {
+        productsInBusket: '.header__basket-counter',
+        products: '.page__wrapper',
+    },
     gallerySelector: '.gallery',
     productInCatalogSelector: '.gallery__item',
     productInCatalogTemplate: '#card-catalog',
@@ -57,23 +62,27 @@ export const settings = {
     orderSettings: {
         address: '.address',
         title: '.card__title',
-        price: '.card__price',
         buttonCardName: 'card',
         buttonCashName: 'cash',
         buttonSubmit: '.order__button',
     },
-    contactsSelector: '.order',
+    contactsSelector: '.contacts',
     contactsTemplate: '#contacts',
     contactsSettings: {
         email: '.email',
         phone: '.phone',
-        buttonSubmit: '.order__button',
+        button: '.order__button',
     },
     successSelector: '.order-success',
     successTemplate: '#success',
     successSettings: {
         description: '.order-success__description',
         button: '.order-success__close',
+    },
+    modalTemplate: '#modal-container',
+    modalSettings: {
+        content: '.modal__content',
+        button: '.modal__close',
     },
     errorField: 'form__errors',
 };

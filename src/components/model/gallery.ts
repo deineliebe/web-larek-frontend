@@ -1,6 +1,5 @@
 import { IGallery, IProduct } from '../../types/model';
 
-//DRAFT
 export class Gallery implements IGallery {
     total: number;
 

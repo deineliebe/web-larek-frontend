@@ -1,6 +1,5 @@
 import { IBasket, IProduct } from '../../types/model';
 
-//DRAFT
 export class Basket implements IBasket {
     products: IProduct[];
 
@@ -12,7 +11,9 @@ export class Basket implements IBasket {
         this.products.push(product);
     }
 
-    removeProduct(id: string): void {}
+    removeProduct(id: string): void {
+        this.products = this.products.filter(function(product){ return product.id != id; });
+    }
 
     clearBasket(): void {
         this.products = [];

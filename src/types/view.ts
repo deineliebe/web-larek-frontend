@@ -9,7 +9,6 @@ export interface IView {
 }
 
 export interface IModalView {
-	closeButton: HTMLButtonElement;
 	content: HTMLElement;
 	open(): void;
 	close(): void;
@@ -20,7 +19,6 @@ export interface IFormView {
 }
 
 export interface IPageView {
-	busketButton: HTMLButtonElement;
 	productsInBusket: HTMLSpanElement;
 	products: HTMLElement[];
 }
@@ -38,33 +36,26 @@ export interface IProductFullView {
 	title: HTMLHeadingElement;
 	description: HTMLParagraphElement;
 	price: HTMLSpanElement;
-	button: HTMLButtonElement;
 }
 
 export interface IBasketView {
 	products: HTMLElement[];
 	total: HTMLSpanElement;
-	button: HTMLButtonElement;
 }
 
 export interface IBasketItemView {
 	id: HTMLSpanElement;
 	title: HTMLSpanElement;
 	price: HTMLSpanElement;
-	button: HTMLButtonElement;
 }
 
 export interface IOrderView {
 	address: HTMLInputElement;
-	buttonOnline: HTMLButtonElement;
-	buttonUponReceipt: HTMLButtonElement;
-	buttonSubmit: HTMLButtonElement;
 }
 
 export interface IContactsView {
 	email: HTMLInputElement;
 	phone: HTMLInputElement;
-	button: HTMLButtonElement;
 }
 
 export interface IAcceptedOrderView {
