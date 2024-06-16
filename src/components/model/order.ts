@@ -6,10 +6,10 @@ export class Order implements IOrder {
     items: string[];
 
     constructor() {
-        this.payment = "";
-        this.address = "";
-        this.email = "";
-        this.phone = "";
+        this.payment = '';
+        this.address = '';
+        this.email = '';
+        this.phone = '';
         this.total = 0;
     }
 
@@ -53,15 +53,15 @@ export class Order implements IOrder {
         this.total = total;
     }
 
-    submitOrder() : void {
+    submitOrder(): void {
         this.resetOrder();
     }
 
     resetOrder(): void {
-        this.paymentType = "";
-        this.address = "";
-        this.email = "";
-        this.phone = "";
+        this.paymentType = '';
+        this.address = '';
+        this.email = '';
+        this.phone = '';
         this.total = 0;
     }
 }

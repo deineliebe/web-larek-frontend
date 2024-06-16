@@ -8,17 +8,14 @@ export class ShopApi extends Api implements IShopApi {
     }
 
     getProductList(): Promise<IGallery> {
-        return this.get("/product/")
-            .then();
+        return this.get('/product/').then();
     }
 
     getProductItem(id: string): Promise<IProduct> {
-        return this.get("/product/" + id)
-            .then();
+        return this.get('/product/' + id).then();
     }
 
     getOrder(): Promise<IOrder> {
-        return this.get("/order/")
-            .then();
+        return this.get('/order/').then();
     }
 }

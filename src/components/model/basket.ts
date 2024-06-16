@@ -12,8 +12,7 @@ export class Basket implements IBasket {
         this.products.push(product);
     }
 
-    removeProduct(id: string): void {
-    }
+    removeProduct(id: string): void {}
 
     clearBasket(): void {
         this.products = [];

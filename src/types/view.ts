@@ -1,72 +1,72 @@
 import { IEvents } from '../components/base/events';
 
 export interface IViewConstructor {
-    new (container: HTMLElement, events?: IEvents[]): IView
+	new (container: HTMLElement, events?: IEvents[]): IView;
 }
 
 export interface IView {
-    render(data?: object): HTMLElement;
+	render(data?: object): HTMLElement;
 }
 
 export interface IModalView {
-    closeButton: HTMLButtonElement;
-    content: HTMLElement;
-    open(): void;
-    close(): void;
+	closeButton: HTMLButtonElement;
+	content: HTMLElement;
+	open(): void;
+	close(): void;
 }
 
 export interface IFormView {
-    errorText: HTMLSpanElement;
+	errorText: HTMLSpanElement;
 }
 
 export interface IPageView {
-    busketButton: HTMLButtonElement;
-    productsInBusket: HTMLSpanElement;
-    products: HTMLElement[];
+	busketButton: HTMLButtonElement;
+	productsInBusket: HTMLSpanElement;
+	products: HTMLElement[];
 }
 
 export interface IProductInCatalogView {
-    category: HTMLSpanElement;
-    title: HTMLHeadingElement;
-    image: HTMLImageElement;
-    price: HTMLSpanElement;
+	category: HTMLSpanElement;
+	title: HTMLHeadingElement;
+	image: HTMLImageElement;
+	price: HTMLSpanElement;
 }
 
 export interface IProductFullView {
-    image: HTMLImageElement;
-    category: HTMLSpanElement;
-    title: HTMLHeadingElement;
-    description: HTMLParagraphElement;
-    price: HTMLSpanElement;
-    button: HTMLButtonElement;
+	image: HTMLImageElement;
+	category: HTMLSpanElement;
+	title: HTMLHeadingElement;
+	description: HTMLParagraphElement;
+	price: HTMLSpanElement;
+	button: HTMLButtonElement;
 }
 
 export interface IBasketView {
-    products: HTMLElement[];
-    total: HTMLSpanElement;
-    button: HTMLButtonElement;
+	products: HTMLElement[];
+	total: HTMLSpanElement;
+	button: HTMLButtonElement;
 }
 
 export interface IBasketItemView {
-    id: HTMLSpanElement;
-    title: HTMLSpanElement;
-    price: HTMLSpanElement;
-    button: HTMLButtonElement;
+	id: HTMLSpanElement;
+	title: HTMLSpanElement;
+	price: HTMLSpanElement;
+	button: HTMLButtonElement;
 }
 
 export interface IOrderView {
-    address: HTMLInputElement;
-    buttonOnline: HTMLButtonElement;
-    buttonUponReceipt: HTMLButtonElement;
-    buttonSubmit: HTMLButtonElement;
+	address: HTMLInputElement;
+	buttonOnline: HTMLButtonElement;
+	buttonUponReceipt: HTMLButtonElement;
+	buttonSubmit: HTMLButtonElement;
 }
 
 export interface IContactsView {
-    email: HTMLInputElement;
-    phone: HTMLInputElement;
-    button: HTMLButtonElement;
+	email: HTMLInputElement;
+	phone: HTMLInputElement;
+	button: HTMLButtonElement;
 }
 
 export interface IAcceptedOrderView {
-    description: HTMLParagraphElement;
+	description: HTMLParagraphElement;
 }
