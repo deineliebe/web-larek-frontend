@@ -1,5 +1,9 @@
 import { View } from './view';
 
 export abstract class FormView extends View {
-    errorText: HTMLSpanElement;
+    protected _errorText: HTMLSpanElement;
+
+    set errorText(errorText: HTMLSpanElement) {
+        this._errorText = errorText;
+    }
 }

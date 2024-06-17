@@ -39,7 +39,7 @@ export interface IProductFullView {
 }
 
 export interface IBasketView {
-	products: HTMLElement[];
+	products: HTMLElement;
 	total: HTMLSpanElement;
 }
 

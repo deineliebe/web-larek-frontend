@@ -1,17 +1,29 @@
 import { IGallery, IProduct } from '../../types/model';
 
 export class Gallery implements IGallery {
-    total: number;
+    protected _products: IProduct[];
+    protected _total: number;
 
     constructor() {
-        this.products = [];
+        this._products = [];
     }
 
     get products(): IProduct[] {
-        return this.products;
+        return this._products;
     }
 
     set products(products: IProduct[]) {
-        this.products = products;
+        this._products = [];
+        for (const product of products) {
+            this._products.push(product);
+        }
+    }
+
+    get total(): number {
+        return this._total;
+    }
+
+    set total(total: number) {
+        this._total = total;
     }
 }

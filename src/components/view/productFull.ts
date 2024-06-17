@@ -1,29 +1,46 @@
 import { IProductFullView } from '../../types/view';
-import { ensureElement } from '../../utils/utils';
 import { settings } from '../../utils/constants';
 import { View } from './view';
 import { IEvents } from '../base/events';
 
 export class ProductFullView extends View implements IProductFullView {
-    image: HTMLImageElement;
-    category: HTMLSpanElement;
-    title: HTMLHeadingElement;
-    description: HTMLParagraphElement;
-    price: HTMLSpanElement;
+    protected _image: HTMLImageElement;
+    protected _category: HTMLSpanElement;
+    protected _title: HTMLHeadingElement;
+    protected _description: HTMLParagraphElement;
+    protected _price: HTMLSpanElement;
     protected _button: HTMLButtonElement;
+
+    set image(image: HTMLImageElement) {
+        this._image = image;
+    }
+
+    set category(category: HTMLSpanElement) {
+        this._category = category;
+    }
+
+    set title(title: HTMLHeadingElement) {
+        this._title = title;
+    }
+
+    set description(description: HTMLParagraphElement) {
+        this._description = description;
+    }
+
+    set price(price: HTMLSpanElement) {
+        this._price = price;
+    }
 
     constructor(protected container: HTMLElement, protected events: IEvents) {
         super(container, events);
-        this.image = ensureElement<HTMLImageElement>(settings.productFullSettings.image);
-        this.category = ensureElement<HTMLSpanElement>(settings.productFullSettings.category);
-        this.description = ensureElement<HTMLParagraphElement>(settings.productFullSettings.description);
-        this.price = ensureElement<HTMLSpanElement>(settings.productFullSettings.price);
-        this._button = ensureElement<HTMLButtonElement>(settings.productFullSettings.button);
-    }
-
-    render(data?: { id: string; title: string }): HTMLElement {
-        if (data) {
-        }
-        return this.container;
+        this.image = container.querySelector(settings.productFullSettings.image);
+        this.category = container.querySelector(
+            settings.productFullSettings.category
+        );
+        this.description = container.querySelector(
+            settings.productFullSettings.description
+        );
+        this.price = container.querySelector(settings.productFullSettings.price);
+        this._button = container.querySelector(settings.productFullSettings.button);
     }
 }

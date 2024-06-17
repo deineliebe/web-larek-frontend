@@ -245,7 +245,7 @@ interface IShopApi {
 ### ShopApi
 В этой работе уже есть класс `Api`, но я создала ещё один класс, `ShopApi`, как надстройку над ним. Этот класс наследуется от класса `Api` и реализует методы, которые есть в коллекции Postman.
 У этого класса есть три атрибута:
-1. `getProductList(): Promise<IGallery>` - метод, который получает данные обо всех продуктах с сервера;
+1. `getProductList(): Promise<IProduct[]>` - метод, который получает данные обо всех продуктах с сервера;
 2. `getProductItem(id: string): Promise<IProduct>` - метод, который получает информацию о продукте с переданным ему идентификатором;
 3. `getOrder(): Promise<IOrder>` - метод, который отправляет данные о заказе на сервер.
 
@@ -359,7 +359,7 @@ interface IAcceptedOrderView {
 ### ModalView
 Класс для работы с модальным окном.   
 Поля:   
-- `closeButton` - `HTMLButtonElement`, кнопка для закрытия модального окна;
+- `_closeButton` - `HTMLButtonElement`, кнопка для закрытия модального окна;
 - `content` - `HTMLElement`, содержимое модального окна.   
 
 Методы:   
@@ -377,7 +377,7 @@ interface IAcceptedOrderView {
 ### PageView
 Класс для отображения страницы сайта.
 Поля:
-- `busketButton` - `HTMLButtonElement`, кнопка, по нажатию на которую открывается модальное окно корзины;
+- `_busketButton` - `HTMLButtonElement`, кнопка, по нажатию на которую открывается модальное окно корзины;
 - `productsInBusket` - `HTMLSpanElement`, элемент, в который записывается количество продуктов в корзине; 
 - `products` - `HTMLElement[]`, список HTML-элементов с данными о продуктах, которые находятся на странице.
 
@@ -401,7 +401,7 @@ interface IAcceptedOrderView {
 - `title` - `HTMLHeadingElement`, заголовок с наименованием продукта;
 - `description` - `HTMLParagraphElement`, описание товара;
 - `price` - `HTMLSpanElement`, элемент со стоимостью товара в синапсах.
-- `button` - `HTMLButtonElement`, кнопка, с помощью которой пользователь может добавить продукт в корзину.
+- `_button` - `HTMLButtonElement`, кнопка, с помощью которой пользователь может добавить продукт в корзину.
 
 Этот класс является наследником `View`.
 
@@ -410,7 +410,7 @@ interface IAcceptedOrderView {
 Поля:   
 - `products` - `HTMLElement[]`, список продуктов с HTML-разметкой, полученной с помощью конструктора класса `BasketItemView;
 - `total` - `HTMLSpanElement`, элемент, в котором содержится стоимость всех продуктов в корзине в синапсах;
-- `button` - `HTMLButtonElement`, кнопка, с помощью которой пользователь может начаь оформление заказа.
+- `_button` - `HTMLButtonElement`, кнопка, с помощью которой пользователь может начаь оформление заказа.
 
 Этот класс является наследником `View`.
 
@@ -420,17 +420,17 @@ interface IAcceptedOrderView {
 - `id` - `HTMLSpanElement`, порядковый номер товара в корзине;
 - `title` - `HTMLSpanElement`, элемент, содержащий название продукта;
 - `price` - `HTMLSpanElement`, элемент, содержащий стоимость товара в синапсах;
-- `button` - `HTMLButtonElement`, кнопка для удаления товара из корзины.
+- `_button` - `HTMLButtonElement`, кнопка для удаления товара из корзины.
 
 Этот класс является наследником `View`.
 
 ### OrderView
 Класс, который реализует отображение модального окна на первом этапе оформления заказа.  
 Поля:   
-- `buttonOnline` - `HTMLButtonElement`, кнопка, нажатие на которую подразумевает выбор оплаты онлайн;
-- `buttonUponReceipt` - `HTMLButtonElement` - кнопка, нажатие на которую подразумевает выбор оплаты при получении;
+- `_buttonOnline` - `HTMLButtonElement`, кнопка, нажатие на которую подразумевает выбор оплаты онлайн;
+- `_buttonUponReceipt` - `HTMLButtonElement` - кнопка, нажатие на которую подразумевает выбор оплаты при получении;
 - `address` - `HTMLInputElement`, поле ввода для адреса пользователя;
-- `buttonSubmit` - `HTMLButtonElement`, кнопка для перехода на второй этап оформления заказа.
+- `_buttonSubmit` - `HTMLButtonElement`, кнопка для перехода на второй этап оформления заказа.
 
 Этот класс наследует метод класса `View` и поле класса `FormView`.
 
@@ -439,7 +439,7 @@ interface IAcceptedOrderView {
 Поля:   
 - `email` - `HTMLInputElement`, поле ввода для адреса почтовой почты;
 - `phone` - `HTMLInputElement`, поле ввода для номера телефона;
-- `button` - `HTMLButtonElement` - кнопка для попытки отправки данных о заказе на сервер.
+- `_button` - `HTMLButtonElement` - кнопка для попытки отправки данных о заказе на сервер.
 
 Этот класс наследует метод класса `View` и поле класса `FormView`.
 

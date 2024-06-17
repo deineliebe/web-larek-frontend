@@ -1,26 +1,36 @@
 import { IPageView } from '../../types/view';
-import { ensureElement } from '../../utils/utils';
 import { settings } from '../../utils/constants';
 import { View } from './view';
 import { IEvents } from '../base/events';
 
 export class PageView extends View implements IPageView {
-    productsInBusket: HTMLSpanElement;
-    products: HTMLElement[];
+    protected _productsInBusket: HTMLSpanElement;
+    protected _products: HTMLElement;
+    protected _wrapper: HTMLElement;
     protected _button: HTMLButtonElement;
 
     constructor(protected container: HTMLElement, protected events: IEvents) {
         super(container, events);
-        this.productsInBusket = ensureElement<HTMLSpanElement>(settings.pageSettings.productsInBusket);
-        for (const item of settings.pageSettings.products) {
-            this.products.push(ensureElement<HTMLElement>(item));
-        }
-        this._button = ensureElement<HTMLButtonElement>(settings.contactsSettings.button);
+        this.productsInBusket = container.querySelector(
+            settings.pageSettings.productsInBusket
+        );
+        this._products = container.querySelector(settings.pageSettings.products);
+        this._wrapper = container.querySelector(settings.pageSettings.wrapper);
     }
 
-    render(data?: { id: string; title: string }): HTMLElement {
-        if (data) {
+    set productsInBusket(productsInBusket: HTMLSpanElement) {
+        this._productsInBusket = productsInBusket;
+    }
+
+    set products(products: HTMLElement[]) {
+        this._products.replaceChildren(...products);
+    }
+
+    set locked(isOpened: boolean) {
+        if (isOpened) {
+            this._wrapper.classList.add('page__wrapper_locked');
+        } else {
+            this._wrapper.classList.remove('page__wrapper_locked');
         }
-        return this.container;
     }
 }

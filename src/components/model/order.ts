@@ -1,55 +1,70 @@
 import { IOrder, PaymentType } from '../../types/model';
 
 export class Order implements IOrder {
-    payment: PaymentType;
-    items: string[];
+    protected _payment: PaymentType;
+    protected _address: string;
+    protected _email: string;
+    protected _phone: string;
+    protected _total: number;
+    protected _items: string[];
 
     constructor() {
-        this.payment = '';
-        this.address = '';
-        this.email = '';
-        this.phone = '';
-        this.total = 0;
+        this._payment = '';
+        this._address = '';
+        this._email = '';
+        this._phone = '';
+        this._total = 0;
     }
 
-    get paymentType(): PaymentType {
-        return this.paymentType;
+    get payment(): PaymentType {
+        return this._payment;
     }
 
-    set paymentType(paymentType: PaymentType) {
-        this.paymentType = paymentType;
+    set payment(payment: PaymentType) {
+        this._payment = payment;
     }
 
     get address(): string {
-        return this.address;
+        return this._address;
     }
 
     set address(address: string) {
-        this.address = address;
+        this._address = address;
     }
 
     get email(): string {
-        return this.email;
+        return this._email;
     }
 
     set email(email: string) {
-        this.email = email;
+        this._email = email;
     }
 
     get phone(): string {
-        return this.phone;
+        return this._phone;
     }
 
     set phone(phone: string) {
-        this.phone = phone;
+        this._phone = phone;
     }
 
     get total(): number {
-        return this.total;
+        return this._total;
     }
 
     set total(total: number) {
-        this.total = total;
+        this._total = total;
+    }
+
+    get items(): string[] {
+        return this._items;
+    }
+
+    set items(items: string[]) {
+        this._items = [];
+        for (const item of items) {
+            this._items.push(item);
+        }
     }
 
     submitOrder(): void {
@@ -57,10 +72,10 @@ export class Order implements IOrder {
     }
 
     resetOrder(): void {
-        this.paymentType = '';
-        this.address = '';
-        this.email = '';
-        this.phone = '';
-        this.total = 0;
+        this._payment = '';
+        this._address = '';
+        this._email = '';
+        this._phone = '';
+        this._total = 0;
     }
 }

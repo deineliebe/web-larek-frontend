@@ -22,9 +22,9 @@ export const settings = {
     pageSelector: '.page',
     pageSettings: {
         productsInBusket: '.header__basket-counter',
-        products: '.page__wrapper',
+        wrapper: '.page__wrapper',
+        products: '.gallery',
     },
-    gallerySelector: '.gallery',
     productInCatalogSelector: '.gallery__item',
     productInCatalogTemplate: '#card-catalog',
     productInCatalogSettings: {

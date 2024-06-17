@@ -1,14 +1,21 @@
 import { IShopApi } from '../../types/api';
 import { IGallery, IOrder, IProduct } from '../../types/model';
-import { Api } from '../base/api';
+import { CDN_URL } from '../../utils/constants';
+import { Api, ApiListResponse } from '../base/api';
 
 export class ShopApi extends Api implements IShopApi {
     constructor(baseUrl: string, options: RequestInit = {}) {
         super(baseUrl, options);
     }
 
-    getProductList(): Promise<IGallery> {
-        return this.get('/product/').then();
+    getProductList(): Promise<IProduct[]> {
+        return this.get('/product/').then(
+            (productsList: ApiListResponse<IProduct>) =>
+                productsList.items.map((item) => ({
+                    ...item,
+                    image: CDN_URL + item.image,
+                }))
+        );
     }
 
     getProductItem(id: string): Promise<IProduct> {

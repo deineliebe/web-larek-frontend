@@ -1,27 +1,25 @@
 import { IBasketView } from '../../types/view';
-import { ensureElement } from '../../utils/utils';
 import { settings } from '../../utils/constants';
 import { View } from './view';
 import { IEvents } from '../base/events';
 
 export class BasketView extends View implements IBasketView {
-    products: HTMLElement[];
-    total: HTMLSpanElement;
+    protected _products: HTMLElement;
+    protected _total: HTMLSpanElement;
     protected _button: HTMLButtonElement;
-    
-    constructor(protected container: HTMLElement, protected events: IEvents) {
-        super(container, events);
-        this.products = [];
-        for (const item of settings.basketSettings.items) {
-            this.products.push(ensureElement<HTMLElement>(item));
-        }
-        this.total = ensureElement<HTMLSpanElement>(settings.basketSettings.total);
-        this._button = ensureElement<HTMLButtonElement>(settings.basketSettings.button);
+
+    set products(products: HTMLElement) {
+        this._products = products;
     }
 
-    render(data?: { id: string; title: string }): HTMLElement {
-        if (data) {
-        }
-        return this.container;
+    set total(total: HTMLSpanElement) {
+        this._total = total;
+    }
+
+    constructor(protected container: HTMLElement, protected events: IEvents) {
+        super(container, events);
+        this.products = container.querySelector(settings.basketSettings.items);
+        this.total = container.querySelector(settings.basketSettings.total);
+        this._button = container.querySelector(settings.basketSettings.button);
     }
 }

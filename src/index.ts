@@ -23,70 +23,126 @@ import { ProductFullView } from './components/view/productFull';
 const api = new ShopApi(API_URL);
 const events = new EventEmitter();
 
+const catalogItemTemplate = ensureElement<HTMLTemplateElement>(
+    settings.productInCatalogTemplate
+);
+const cardFullTemplate = ensureElement<HTMLTemplateElement>(
+    settings.productFullTemplate
+);
+const basketTemplate = ensureElement<HTMLTemplateElement>(
+    settings.basketTemplate
+);
+const basketItemTemplate = ensureElement<HTMLTemplateElement>(
+    settings.basketItemTemplate
+);
+const orderTemplate = ensureElement<HTMLTemplateElement>(
+    settings.orderTemplate
+);
+const contactsTemplate = ensureElement<HTMLTemplateElement>(
+    settings.contactsTemplate
+);
+const successTemplate = ensureElement<HTMLTemplateElement>(
+    settings.successTemplate
+);
+
 const acceptedOrderModel = new AcceptedOrder();
 const basketModel = new Basket();
 const galleryModel = new Gallery();
 const orderModel = new Order();
 
-const modal = new ModalView(ensureElement<HTMLElement>(settings.modalTemplate), events);
-const acceptedOrder = new AcceptedOrderView(ensureElement<HTMLElement>(settings.successTemplate), events);
-const basket = new BasketView(ensureElement<HTMLElement>(settings.basketTemplate), events);
-const basketItem = new BasketItemView(ensureElement<HTMLElement>(settings.basketItemTemplate), events);
-const contacts = new ContactsView(ensureElement<HTMLElement>(settings.contactsTemplate), events);
-const order = new OrderView(ensureElement<HTMLElement>(settings.orderTemplate), events);
-const productFull = new ProductFullView(ensureElement<HTMLElement>(settings.productFullTemplate), events);
-const productInCatalog = new ProductInCatalogView(ensureElement<HTMLElement>(settings.basketTemplate), events);
+const modal = new ModalView(
+    ensureElement<HTMLElement>(settings.modalTemplate),
+    events
+);
+const acceptedOrder = new AcceptedOrderView(
+    ensureElement<HTMLElement>(settings.successTemplate),
+    events
+);
+const basket = new BasketView(
+    ensureElement<HTMLElement>(settings.basketTemplate),
+    events
+);
+const basketItem = new BasketItemView(
+    ensureElement<HTMLElement>(settings.basketItemTemplate),
+    events
+);
+const contacts = new ContactsView(
+    ensureElement<HTMLElement>(settings.contactsTemplate),
+    events
+);
+const order = new OrderView(
+    ensureElement<HTMLElement>(settings.orderTemplate),
+    events
+);
+const productFull = new ProductFullView(
+    ensureElement<HTMLElement>(settings.productFullTemplate),
+    events
+);
+const productInCatalog = new ProductInCatalogView(
+    ensureElement<HTMLElement>(settings.basketTemplate),
+    events
+);
 
-const page = new PageView(ensureElement<HTMLElement>(settings.gallerySelector), events);
-
+const page = new PageView(
+    ensureElement<HTMLElement>(settings.pageSelector),
+    events
+);
 
 function handleGallerySetProducts() {
-    page.render();
+    //Доделаю во второй части работы
 }
 
 function handleBasketAddProduct() {
+    //Доделаю во второй части работы
 }
 
 function handleBasketOpen() {
-    basket.render();
+    //Доделаю во второй части работы
 }
 
 function handleBasketDeleteProduct() {
+    //Доделаю во второй части работы
 }
 
 function handleBasketClear() {
-    basketModel.clearBasket();
+    //Доделаю во второй части работы
 }
 
 function handleOrderCreate() {
-    order.render();
+    //Доделаю во второй части работы
 }
 
 function handleOrderSubmit() {
+    //Доделаю во второй части работы
 }
 
 function handleOrderAccept() {
-    acceptedOrder.render();
+    //Доделаю во второй части работы
 }
 
 function handleOrderClear() {
+    //Доделаю во второй части работы
 }
 
 function handleSuccessSubmit() {
+    //Доделаю во второй части работы
 }
 
 function handleProductSelect() {
+    //Доделаю во второй части работы
 }
 
 function handlePreviewChange() {
-    productFull.render();
+    //Доделаю во второй части работы
 }
 
 function handleModalOpen() {
+    page.locked = true;
     modal.open();
 }
 
 function handleModalClose() {
+    page.locked = false;
     modal.close();
 }
 
@@ -104,3 +160,17 @@ events.on(Events.CHOOOSE_PRODUCT, handleProductSelect);
 events.on(Events.PREVIEW_CHANGE, handlePreviewChange);
 events.on(Events.MODAL_WINDOW_OPEN, handleModalOpen);
 events.on(Events.MODAL_WINDOW_CLOSE, handleModalClose);
+
+api
+    .getProductList()
+    .then((data) => {
+        /*galleryModel.products = data;
+        for (let product of data) {
+            const cardItem = new ProductInCatalogView(catalogItemTemplate, events);
+           
+        }
+        Доделаю во второй части работы*/
+    })
+    .catch((errorMessage) => {
+        console.log(errorMessage);
+    });

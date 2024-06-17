@@ -4,9 +4,7 @@ import { IEvents } from '../base/events';
 export abstract class View implements IView {
     protected container: HTMLElement;
 
-    constructor(container: HTMLElement, events: IEvents) {
-        
-    }
+    constructor(container: HTMLElement, events: IEvents) {}
 
     render(data?: object | undefined): HTMLElement {
         if (typeof data === 'object') {

@@ -1,23 +1,20 @@
 import { IModalView } from '../../types/view';
-import { ensureElement } from '../../utils/utils';
 import { settings } from '../../utils/constants';
 import { View } from './view';
 import { IEvents } from '../base/events';
 
 export class ModalView extends View implements IModalView {
-    content: HTMLElement;
+    protected _content: HTMLElement;
     protected _closeButton: HTMLButtonElement;
+
+    set content(content: HTMLElement) {
+        this._content = content;
+    }
 
     constructor(container: HTMLElement, events: IEvents) {
         super(container, events);
-        this._closeButton = ensureElement<HTMLButtonElement>(settings.modalSettings.button, container);
-        this.content = ensureElement<HTMLElement>(settings.modalSettings.content, container);
-    }
-
-    render(data?: object | undefined): HTMLElement {
-        super.render(data);
-        this.open();
-        return this.container;
+        this._closeButton = container.querySelector(settings.modalSettings.button);
+        this.content = container.querySelector(settings.modalSettings.content);
     }
 
     open(): void {
@@ -26,5 +23,11 @@ export class ModalView extends View implements IModalView {
 
     close(): void {
         this.container.classList.remove('modal_active');
+    }
+
+    render(data?: object | undefined): HTMLElement {
+        super.render(data);
+        this.open();
+        return this.container;
     }
 }

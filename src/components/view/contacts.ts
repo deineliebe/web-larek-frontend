@@ -1,24 +1,25 @@
 import { IContactsView } from '../../types/view';
-import { ensureElement } from '../../utils/utils';
 import { settings } from '../../utils/constants';
 import { FormView } from './form';
 import { IEvents } from '../base/events';
 
 export class ContactsView extends FormView implements IContactsView {
-    email: HTMLInputElement;
-    phone: HTMLInputElement;
+    protected _email: HTMLInputElement;
+    protected _phone: HTMLInputElement;
     protected _button: HTMLButtonElement;
+
+    set email(email: HTMLInputElement) {
+        this._email = email;
+    }
+
+    set phone(phone: HTMLInputElement) {
+        this._phone = phone;
+    }
 
     constructor(protected container: HTMLElement, protected events: IEvents) {
         super(container, events);
-        this.email = ensureElement<HTMLInputElement>(settings.contactsSettings.email);
-        this.phone = ensureElement<HTMLInputElement>(settings.contactsSettings.phone);
-        this._button = ensureElement<HTMLButtonElement>(settings.contactsSettings.button);
-    }
-
-    render(data?: { id: string; title: string }): HTMLElement {
-        if (data) {
-        }
-        return this.container;
+        this.email = container.querySelector(settings.contactsSettings.email);
+        this.phone = container.querySelector(settings.contactsSettings.phone);
+        this._button = container.querySelector(settings.contactsSettings.button);
     }
 }
