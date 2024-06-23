@@ -30,7 +30,7 @@ export class ProductInCatalogView
     }
 
     constructor(protected container: HTMLElement, protected events: IEvents) {
-        super(container, events);
+        super(container);
         this.image = container.querySelector(settings.productFullSettings.image);
         this.category = container.querySelector(
             settings.productFullSettings.category

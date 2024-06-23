@@ -1,6 +1,6 @@
 import { IAcceptedOrderView } from '../../types/view';
 import { settings } from '../../utils/constants';
-import { View } from './view';
+import { ICardActions, View } from './view';
 import { IEvents } from '../base/events';
 
 export class AcceptedOrderView extends View implements IAcceptedOrderView {
@@ -12,8 +12,8 @@ export class AcceptedOrderView extends View implements IAcceptedOrderView {
         this._description = description;
     }
 
-    constructor(container: HTMLElement, events: IEvents) {
-        super(container, events);
+    constructor(container: HTMLElement, actions?: ICardActions) {
+        super(container);
         this._description = container.querySelector(
             settings.successSettings.description
         );

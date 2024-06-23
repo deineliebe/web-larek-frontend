@@ -1,6 +1,6 @@
 import { IModalView } from '../../types/view';
 import { settings } from '../../utils/constants';
-import { View } from './view';
+import { ICardActions, View } from './view';
 import { IEvents } from '../base/events';
 
 export class ModalView extends View implements IModalView {
@@ -11,8 +11,8 @@ export class ModalView extends View implements IModalView {
         this._content = content;
     }
 
-    constructor(container: HTMLElement, events: IEvents) {
-        super(container, events);
+    constructor(container: HTMLElement, actions?: ICardActions) {
+        super(container);
         this._closeButton = container.querySelector(settings.modalSettings.button);
         this.content = container.querySelector(settings.modalSettings.content);
     }

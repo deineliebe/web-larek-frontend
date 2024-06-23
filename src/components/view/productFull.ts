@@ -32,7 +32,7 @@ export class ProductFullView extends View implements IProductFullView {
     }
 
     constructor(protected container: HTMLElement, protected events: IEvents) {
-        super(container, events);
+        super(container);
         this.image = container.querySelector(settings.productFullSettings.image);
         this.category = container.querySelector(
             settings.productFullSettings.category

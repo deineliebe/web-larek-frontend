@@ -17,6 +17,7 @@ export class Gallery implements IGallery {
         for (const product of products) {
             this._products.push(product);
         }
+        this._total = this._products.length;
     }
 
     get total(): number {

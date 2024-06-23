@@ -10,6 +10,7 @@ import { Basket } from './components/model/basket';
 import { Gallery } from './components/model/gallery';
 import { Order } from './components/model/order';
 
+import { View } from './components/view/view';
 import { ModalView } from './components/view/modal';
 import { AcceptedOrderView } from './components/view/acceptedOrder';
 import { BasketView } from './components/view/basket';
@@ -19,9 +20,20 @@ import { OrderView } from './components/view/order';
 import { PageView } from './components/view/page';
 import { ProductInCatalogView } from './components/view/productInCatalog';
 import { ProductFullView } from './components/view/productFull';
+import { IProduct } from './types/model';
 
 const api = new ShopApi(API_URL);
 const events = new EventEmitter();
+
+events.onAll(({ eventName, data }) => {
+    console.log(eventName, data);
+})
+
+// Отображения
+const page = new PageView(
+    ensureElement<HTMLElement>(settings.pageSelector),
+    events
+);
 
 const catalogItemTemplate = ensureElement<HTMLTemplateElement>(
     settings.productInCatalogTemplate
@@ -45,11 +57,13 @@ const successTemplate = ensureElement<HTMLTemplateElement>(
     settings.successTemplate
 );
 
+// Модели
 const acceptedOrderModel = new AcceptedOrder();
 const basketModel = new Basket();
 const galleryModel = new Gallery();
 const orderModel = new Order();
 
+// Шаблоны
 const modal = new ModalView(
     ensureElement<HTMLElement>(settings.modalTemplate),
     events
@@ -83,13 +97,20 @@ const productInCatalog = new ProductInCatalogView(
     events
 );
 
-const page = new PageView(
-    ensureElement<HTMLElement>(settings.pageSelector),
-    events
-);
-
-function handleGallerySetProducts() {
-    //Доделаю во второй части работы
+function handleGallerySetProducts(items: IProduct[]) {
+    galleryModel.products = items;
+    var productViews: HTMLElement[] = [];
+    for (let item of items) {
+        var card = new ProductInCatalogView(cloneTemplate(settings.productInCatalogTemplate), events);
+        card.on(Events.PREVIEW_CHANGE, handlePreviewChange);
+        return card.render({
+            title: item.title,
+            image: item.image,
+            category: item.category,
+            price: item.price,
+        });
+    }
+    page.products = productViews
 }
 
 function handleBasketAddProduct() {
@@ -157,19 +178,13 @@ events.on(Events.ACCEPT_ORDER, handleOrderAccept);
 events.on(Events.SUCCESS_SUMBIT, handleSuccessSubmit);
 events.on(Events.CLEAR_ORDER, handleOrderClear);
 events.on(Events.CHOOOSE_PRODUCT, handleProductSelect);
-events.on(Events.PREVIEW_CHANGE, handlePreviewChange);
 events.on(Events.MODAL_WINDOW_OPEN, handleModalOpen);
 events.on(Events.MODAL_WINDOW_CLOSE, handleModalClose);
 
 api
     .getProductList()
     .then((data) => {
-        /*galleryModel.products = data;
-        for (let product of data) {
-            const cardItem = new ProductInCatalogView(catalogItemTemplate, events);
-           
-        }
-        Доделаю во второй части работы*/
+        handleGallerySetProducts(data);
     })
     .catch((errorMessage) => {
         console.log(errorMessage);

@@ -1,6 +1,6 @@
 import { IBasketItemView } from '../../types/view';
 import { settings } from '../../utils/constants';
-import { View } from './view';
+import { ICardActions, View } from './view';
 import { IEvents } from '../base/events';
 
 export class BasketItemView extends View implements IBasketItemView {
@@ -21,8 +21,8 @@ export class BasketItemView extends View implements IBasketItemView {
         this._price = price;
     }
 
-    constructor(protected container: HTMLElement, protected events: IEvents) {
-        super(container, events);
+    constructor(protected container: HTMLElement, actions?: ICardActions) {
+        super(container);
         this.id = container.querySelector(settings.basketItemSettings.id);
         this.title = container.querySelector(settings.basketItemSettings.title);
         this.price = container.querySelector(settings.basketItemSettings.price);

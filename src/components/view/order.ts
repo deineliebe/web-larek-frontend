@@ -2,6 +2,7 @@ import { IOrderView } from '../../types/view';
 import { settings } from '../../utils/constants';
 import { FormView } from './form';
 import { IEvents } from '../base/events';
+import { ICardActions } from './view';
 
 export class OrderView extends FormView implements IOrderView {
     protected _address: HTMLInputElement;
@@ -13,8 +14,8 @@ export class OrderView extends FormView implements IOrderView {
         this._address = address;
     }
 
-    constructor(protected container: HTMLElement, protected events: IEvents) {
-        super(container, events);
+    constructor(protected container: HTMLElement, actions?: ICardActions) {
+        super(container);
         this.address = container.querySelector(settings.orderSettings.address);
         this._buttonCardName = container.querySelector(
             settings.orderSettings.buttonCardName
