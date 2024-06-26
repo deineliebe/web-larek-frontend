@@ -7,6 +7,7 @@ export interface IProduct {
 	title: string;
 	category: string;
 	price: number | null;
+	busketId: number;
 }
 
 export interface IGallery {
@@ -16,6 +17,7 @@ export interface IGallery {
 
 export interface IBasket {
 	products: IProduct[];
+	total: number;
 	addProduct(id: IProduct): void;
 	removeProduct(id: string): void;
 	clearBasket(): void;
@@ -28,7 +30,6 @@ export interface IOrder {
 	address: string;
 	total: number;
 	items: string[];
-	submitOrder(): void;
 	resetOrder(): void;
 }
 

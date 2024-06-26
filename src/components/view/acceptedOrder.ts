@@ -1,22 +1,23 @@
 import { IAcceptedOrderView } from '../../types/view';
 import { settings } from '../../utils/constants';
 import { ICardActions, View } from './view';
-import { IEvents } from '../base/events';
 
 export class AcceptedOrderView extends View implements IAcceptedOrderView {
-    protected _title: HTMLHeadingElement;
-    protected _description: HTMLParagraphElement;
+    protected _total: HTMLParagraphElement;
     protected _button: HTMLButtonElement;
 
-    set description(description: HTMLParagraphElement) {
-        this._description = description;
+    set total(total: number) {
+        this.setText(this._total, 'Списано ' + total + ' синапсов');
     }
 
-    constructor(container: HTMLElement, actions?: ICardActions) {
+    constructor(container: HTMLElement, protected actions?: ICardActions) {
         super(container);
-        this._description = container.querySelector(
-            settings.successSettings.description
+        this._total = container.querySelector(
+            settings.successSettings.total
         );
         this._button = container.querySelector(settings.successSettings.button);
+        if (actions?.onClick) {
+            this._button.addEventListener('click', actions.onClick);
+        }
     }
 }

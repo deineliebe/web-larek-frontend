@@ -6,6 +6,7 @@ export class Gallery implements IGallery {
 
     constructor() {
         this._products = [];
+        this._total = 0;
     }
 
     get products(): IProduct[] {
@@ -17,7 +18,6 @@ export class Gallery implements IGallery {
         for (const product of products) {
             this._products.push(product);
         }
-        this._total = this._products.length;
     }
 
     get total(): number {

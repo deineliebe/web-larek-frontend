@@ -1,21 +1,21 @@
 import { IView } from '../../types/view';
 
 export interface ICardActions {
-    onClick: (event: MouseEvent) => void;
+	onClick: (event: MouseEvent) => void;
 }
 
 export abstract class View implements IView {
-    protected container: HTMLElement;
-
-    constructor(container: HTMLElement, actions?: ICardActions) {}
-
-    toggleClass(element: HTMLElement, className: string, force?: boolean) {
-        element.classList.toggle(className, force);
-    }
+    protected constructor(protected readonly container: HTMLElement) {}
 
     protected setText(element: HTMLElement, value: unknown) {
         if (element) {
             element.textContent = String(value);
+        }
+    }
+
+    protected setValue(element: HTMLInputElement, value: unknown) {
+        if (element) {
+            element.value = String(value);
         }
     }
 
@@ -26,14 +26,6 @@ export abstract class View implements IView {
         }
     }
 
-    protected setHidden(element: HTMLElement) {
-        element.style.display = 'none';
-    }
-
-    protected setVisible(element: HTMLElement) {
-        element.style.removeProperty('display');
-    }
-    
     protected setImage(element: HTMLImageElement, src: string, alt?: string) {
         if (element) {
             element.src = src;

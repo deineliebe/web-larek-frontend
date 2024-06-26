@@ -1,7 +1,6 @@
 import { IPageView } from '../../types/view';
-import { Events, settings } from '../../utils/constants';
-import { View } from './view';
-import { IEvents } from '../base/events';
+import { settings } from '../../utils/constants';
+import { ICardActions, View } from './view';
 
 export class PageView extends View implements IPageView {
     protected _productsInBusket: HTMLSpanElement;
@@ -10,20 +9,24 @@ export class PageView extends View implements IPageView {
     protected _basket: HTMLElement;
     protected _button: HTMLButtonElement;
 
-    constructor(protected container: HTMLElement, protected events: IEvents) {
+    constructor(
+		protected container: HTMLElement,
+		protected actions?: ICardActions
+    ) {
         super(container);
-        this.productsInBusket = container.querySelector(
+        this._productsInBusket = container.querySelector(
             settings.pageSettings.productsInBusket
         );
         this._products = container.querySelector(settings.pageSettings.products);
         this._wrapper = container.querySelector(settings.pageSettings.wrapper);
-        this._basket.addEventListener('click', () => {
-			this.events.emit(Events.OPEN_BASKET);
-		});
+        this._basket = container.querySelector(settings.pageSettings.basket);
+        if (actions?.onClick) {
+            this._basket.addEventListener('click', actions.onClick);
+        }
     }
 
-    set productsInBusket(productsInBusket: HTMLSpanElement) {
-        this._productsInBusket = productsInBusket;
+    set productsInBusket(productsInBusket: number) {
+        this.setText(this._productsInBusket, productsInBusket);
     }
 
     set products(products: HTMLElement[]) {

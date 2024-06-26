@@ -2,9 +2,9 @@ import { IOrder, PaymentType } from '../../types/model';
 
 export class Order implements IOrder {
     protected _payment: PaymentType;
-    protected _address: string;
     protected _email: string;
     protected _phone: string;
+    protected _address: string;
     protected _total: number;
     protected _items: string[];
 
@@ -65,10 +65,6 @@ export class Order implements IOrder {
         for (const item of items) {
             this._items.push(item);
         }
-    }
-
-    submitOrder(): void {
-        this.resetOrder();
     }
 
     resetOrder(): void {

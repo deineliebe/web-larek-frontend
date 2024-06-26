@@ -1,10 +1,12 @@
 import { IEvents } from '../components/base/events';
+import { PaymentType } from './model';
 
 export interface IViewConstructor {
 	new (container: HTMLElement, events?: IEvents[]): IView;
 }
 
 export interface IView {
+	setDisabled(element: HTMLElement, state: boolean): void;
 	render(data?: object): HTMLElement;
 }
 
@@ -15,49 +17,52 @@ export interface IModalView {
 }
 
 export interface IFormView {
-	errorText: HTMLSpanElement;
+	errorText: string;
 }
 
 export interface IPageView {
-	productsInBusket: HTMLSpanElement;
+	productsInBusket: number;
 	products: HTMLElement[];
 }
 
 export interface IProductInCatalogView {
-	category: HTMLSpanElement;
-	title: HTMLHeadingElement;
-	image: HTMLImageElement;
-	price: HTMLSpanElement;
+	category: string;
+	title: string;
+	image: string;
+	price: number;
 }
 
 export interface IProductFullView {
-	image: HTMLImageElement;
-	category: HTMLSpanElement;
-	title: HTMLHeadingElement;
-	description: HTMLParagraphElement;
-	price: HTMLSpanElement;
+	image: string;
+	category: string;
+	title: string;
+	description: string;
+	price: number;
 }
 
 export interface IBasketView {
-	products: HTMLElement;
-	total: HTMLSpanElement;
+	products: HTMLElement[];
+	total: number;
 }
 
 export interface IBasketItemView {
-	id: HTMLSpanElement;
-	title: HTMLSpanElement;
-	price: HTMLSpanElement;
+	busketId: number;
+	title: string;
+	price: number;
 }
 
 export interface IOrderView {
-	address: HTMLInputElement;
+	address: string;
+	getActiveButton(): PaymentType;
+	clear(): void;
 }
 
 export interface IContactsView {
-	email: HTMLInputElement;
-	phone: HTMLInputElement;
+	email: string;
+	phone: string;
+	clear(): void;
 }
 
 export interface IAcceptedOrderView {
-	description: HTMLParagraphElement;
+	total: number;
 }
