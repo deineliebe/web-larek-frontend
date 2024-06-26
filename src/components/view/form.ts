@@ -1,13 +1,13 @@
 import { View } from './view';
 
 export abstract class FormView extends View {
-    protected _errorText: HTMLSpanElement;
+	protected _errorText: HTMLSpanElement;
 
-    get errorText(): string {
-        return this._errorText.textContent;
-    }
+	get errorText(): string {
+		return this._errorText.textContent;
+	}
 
-    set errorText(errorText: string) {
-        this.setText(this._errorText, errorText);
-    }
+	set errorText(errorText: string) {
+		this.setText(this._errorText, errorText);
+	}
 }
