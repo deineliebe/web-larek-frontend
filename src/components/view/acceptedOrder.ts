@@ -2,7 +2,7 @@ import { IAcceptedOrderView } from '../../types/view';
 import { settings } from '../../utils/constants';
 import { ICardActions, View } from './view';
 
-export class AcceptedOrderView extends View implements IAcceptedOrderView {
+export class AcceptedOrderView extends View<IAcceptedOrderView> {
 	protected _total: HTMLParagraphElement;
 	protected _button: HTMLButtonElement;
 

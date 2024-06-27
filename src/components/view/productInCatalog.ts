@@ -2,10 +2,7 @@ import { IProductInCatalogView } from '../../types/view';
 import { settings } from '../../utils/constants';
 import { ICardActions, View } from './view';
 
-export class ProductInCatalogView
-	extends View
-	implements IProductInCatalogView
-{
+export class ProductInCatalogView extends View<IProductInCatalogView> {
 	protected _category: HTMLSpanElement;
 	protected _title: HTMLHeadingElement;
 	protected _image: HTMLImageElement;
@@ -18,7 +15,7 @@ export class ProductInCatalogView
 
 	set category(category: string) {
 		this.setText(this._category, category);
-		if (!this._category.classList.contains('card__category_soft'))
+		if (category !== 'софт-скил')
 			this._category.classList.remove('card__category_soft');
 		switch (category) {
 			case 'хард-скил':

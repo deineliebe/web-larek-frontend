@@ -103,17 +103,16 @@ function handlePreviewChange(item: IProduct) {
 			onClick: () => events.emit(Events.TAKE_PRODUCT, item),
 		}
 	);
-	modal.render({
-		content: card.render({
-			title: item.title,
-			image: item.image,
-			category: item.category,
-			description: item.description,
-			price: item.price,
-			id: item.id,
-			busketId: basketModel.products.indexOf(item),
-		}),
+	modal.content = card.render({
+		title: item.title,
+		image: item.image,
+		category: item.category,
+		description: item.description,
+		price: item.price,
+		id: item.id,
+		busketId: basketModel.products.indexOf(item),
 	});
+	modal.render();
 }
 
 events.on(Events.TAKE_PRODUCT, handleBasketAddProduct);
@@ -141,9 +140,8 @@ function handleBasketOpen() {
 	}
 	basket.products = products;
 	basket.total = basketModel.total;
-	modal.render({
-		content: basket.render(),
-	});
+	modal.content = basket.render();
+	modal.render();
 }
 
 events.on(Events.REMOVE_PRODUCT, handleBasketDeleteProduct);
@@ -158,9 +156,8 @@ function handleBasketDeleteProduct(item: IProduct) {
 events.on(Events.CREATE_ORDER, handleOrderCreate);
 
 function handleOrderCreate() {
-	modal.render({
-		content: order.render(),
-	});
+	modal.content = order.render();
+	modal.render();
 }
 
 events.on(Events.ORDER_SUBMIT, handleOrderSubmit);
@@ -168,9 +165,8 @@ events.on(Events.ORDER_SUBMIT, handleOrderSubmit);
 function handleOrderSubmit() {
 	orderModel.address = order.address;
 	orderModel.payment = order.getActiveButton();
-	modal.render({
-		content: contacts.render(),
-	});
+	modal.content = contacts.render();
+	modal.render();
 }
 
 events.on(Events.ACCEPT_ORDER, handleOrderAccept);
@@ -194,9 +190,8 @@ function handleOrderAccept() {
 			items: orderModel.items,
 		})
 		.then((data: IAcceptedOrder) => {
-			modal.render({
-				content: acceptedOrder.render(data),
-			});
+			modal.content = acceptedOrder.render(data);
+			modal.render();
 			galleryModel.total = 0;
 			page.productsInBusket = galleryModel.total;
 			order.clear();

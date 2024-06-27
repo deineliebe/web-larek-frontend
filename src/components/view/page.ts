@@ -2,7 +2,7 @@ import { IPageView } from '../../types/view';
 import { settings } from '../../utils/constants';
 import { ICardActions, View } from './view';
 
-export class PageView extends View implements IPageView {
+export class PageView extends View<IPageView> implements IPageView {
 	protected _productsInBusket: HTMLSpanElement;
 	protected _products: HTMLElement;
 	protected _wrapper: HTMLElement;

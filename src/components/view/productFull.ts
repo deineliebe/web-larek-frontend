@@ -3,7 +3,7 @@ import { IProductFullView } from '../../types/view';
 import { settings } from '../../utils/constants';
 import { ICardActions, View } from './view';
 
-export class ProductFullView extends View implements IProductFullView {
+export class ProductFullView extends View<IProductFullView> {
 	protected _image: HTMLImageElement;
 	protected _category: HTMLSpanElement;
 	protected _title: HTMLHeadingElement;
@@ -17,14 +17,14 @@ export class ProductFullView extends View implements IProductFullView {
 
 	set category(category: string) {
 		this.setText(this._category, category);
-		if (!this._category.classList.contains('card__category_soft'))
-			this._category.classList.remove('card__category_soft');
+		if (category !== 'другое')
+			this._category.classList.remove('card__category_other');
 		switch (category) {
+			case 'софт-скил':
+				this._category.classList.add('card__category_soft');
+				break;
 			case 'хард-скил':
 				this._category.classList.add('card__category_hard');
-				break;
-			case 'другое':
-				this._category.classList.add('card__category_other');
 				break;
 			case 'дополнительное':
 				this._category.classList.add('card__category_additional');

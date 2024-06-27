@@ -4,7 +4,7 @@ export interface ICardActions {
 	onClick: (event: MouseEvent) => void;
 }
 
-export abstract class View implements IView {
+export abstract class View<T> implements IView<T> {
 	protected constructor(protected readonly container: HTMLElement) {}
 
 	protected setText(element: HTMLElement, value: unknown) {
@@ -35,7 +35,7 @@ export abstract class View implements IView {
 		}
 	}
 
-	render(data?: object | undefined): HTMLElement {
+	render(data?: T): HTMLElement {
 		if (typeof data === 'object') {
 			Object.assign(this, data);
 		}

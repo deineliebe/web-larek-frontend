@@ -3,7 +3,7 @@ import { settings } from '../../utils/constants';
 import { ICardActions, View } from './view';
 import { createElement } from '../../utils/utils';
 
-export class BasketView extends View implements IBasketView {
+export class BasketView extends View<IBasketView> {
 	protected _products: HTMLElement;
 	protected _total: HTMLSpanElement;
 	protected _button: HTMLButtonElement;

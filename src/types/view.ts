@@ -1,13 +1,13 @@
 import { IEvents } from '../components/base/events';
 import { PaymentType } from './model';
 
-export interface IViewConstructor {
-	new (container: HTMLElement, events?: IEvents[]): IView;
+export interface IViewConstructor<T> {
+	new (container: HTMLElement, events?: IEvents[]): IView<T>;
 }
 
-export interface IView {
+export interface IView<T> {
 	setDisabled(element: HTMLElement, state: boolean): void;
-	render(data?: object): HTMLElement;
+	render(data?: T): HTMLElement;
 }
 
 export interface IModalView {
@@ -16,7 +16,7 @@ export interface IModalView {
 	close(): void;
 }
 
-export interface IFormView {
+export interface IFormView<T> {
 	errorText: string;
 }
 

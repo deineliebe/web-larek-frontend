@@ -4,7 +4,7 @@ import { IEvents } from '../base/events';
 import { ensureElement } from '../../utils/utils';
 import { Events, settings } from '../../utils/constants';
 
-export class ModalView extends View implements IModalView {
+export class ModalView extends View<IModalView> {
 	protected _closeButton: HTMLButtonElement;
 	protected _content: HTMLElement;
 
@@ -40,7 +40,7 @@ export class ModalView extends View implements IModalView {
 		this.events.emit(Events.MODAL_WINDOW_CLOSE);
 	}
 
-	render(data?: object | undefined): HTMLElement {
+	render(data?: IModalView): HTMLElement {
 		super.render(data);
 		this.open();
 		return this.container;

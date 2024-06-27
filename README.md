@@ -245,9 +245,9 @@ interface IShopApi {
 ## Интерфейсы отображений
 ### IView
 ```typescript
-interface IView {
+interface IView<T> {
 	setDisabled(element: HTMLElement, state: boolean): void;
-	render(data?: object): HTMLElement;
+	render(data?: T): HTMLElement;
 }
 ```
 
@@ -255,8 +255,8 @@ interface IView {
 Интерфейс-конструктор для создания новых объектов.   
 - Содержит конструктор, принимающий HTML-разметку элемента, и события, которое можно навесить на данный элемент. Возвращает новый объект типа `IView`.
 ```typescript
-interface IViewConstructor {
-    new (container: HTMLElement, events?: IEvents[]): IView
+interface IViewConstructor<T> {
+	new (container: HTMLElement, events?: IEvents[]): IView<T>;
 }
 ```
 
@@ -271,7 +271,7 @@ interface IModalView {
 
 ### IFormView
 ```typescript
-interface IFormView {
+interface IFormView<T> {
 	errorText: string;
 }
 ```

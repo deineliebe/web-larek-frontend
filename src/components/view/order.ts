@@ -4,7 +4,7 @@ import { settings } from '../../utils/constants';
 import { FormView } from './form';
 import { ICardActions } from './view';
 
-export class OrderView extends FormView implements IOrderView {
+export class OrderView extends FormView<IOrderView> {
 	protected _address: HTMLInputElement;
 	protected _buttonOnline: HTMLButtonElement;
 	protected _buttonUponReceipt: HTMLButtonElement;
@@ -28,6 +28,8 @@ export class OrderView extends FormView implements IOrderView {
 
 	clear(): void {
 		this.address = '';
+		this.errorText = '';
+		this.setDisabled(this._buttonSubmit, true);
 	}
 
 	constructor(

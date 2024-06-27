@@ -2,7 +2,7 @@ import { IBasketItemView } from '../../types/view';
 import { settings } from '../../utils/constants';
 import { ICardActions, View } from './view';
 
-export class BasketItemView extends View implements IBasketItemView {
+export class BasketItemView extends View<IBasketItemView> {
 	protected _busketId: HTMLSpanElement;
 	protected _title: HTMLSpanElement;
 	protected _price: HTMLSpanElement;

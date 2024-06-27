@@ -1,6 +1,6 @@
 import { View } from './view';
 
-export abstract class FormView extends View {
+export abstract class FormView<T> extends View<T> {
 	protected _errorText: HTMLSpanElement;
 
 	get errorText(): string {

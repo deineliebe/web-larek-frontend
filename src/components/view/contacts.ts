@@ -3,7 +3,7 @@ import { settings } from '../../utils/constants';
 import { FormView } from './form';
 import { ICardActions } from './view';
 
-export class ContactsView extends FormView implements IContactsView {
+export class ContactsView extends FormView<IContactsView> {
 	protected _email: HTMLInputElement;
 	protected _phone: HTMLInputElement;
 	protected _button: HTMLButtonElement;
@@ -27,6 +27,8 @@ export class ContactsView extends FormView implements IContactsView {
 	clear(): void {
 		this.email = '';
 		this.phone = '';
+		this.errorText = '';
+		this.setDisabled(this._button, true);
 	}
 
 	constructor(
